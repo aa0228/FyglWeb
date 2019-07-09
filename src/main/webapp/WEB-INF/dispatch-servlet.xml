@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+		   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd"
+		   default-autowire="byName">
+
+
+	<!-- HandlerMapping -->
+	<bean
+			class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+
+	<!-- HandlerAdapter -->
+	<bean
+			class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+
+
+	<!-- 使用spring注解 -->  
+    <mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+
+	 <!-- spring自动扫描的包名 -->  
+	<context:component-scan base-package="nju.software.fygl.web.controller" />
+
+	<!--<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+		<bean class="nju.software.fygl.web.interceptor.AccessInterceptor">
+		<<property name="excludeUrls">
+				<list>
+					<value>/login.do</value>
+					<value>/login.aj</value>
+				</list>
+			</property>
+		</bean>
+	</mvc:interceptors>-->
+
+	<!-- 设置返回url前缀和后缀,配置视图解析器 -->  
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+	<bean  class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+	<property name="mediaTypes">
+		<map>
+			<entry key="html" value="text/html" />
+			<entry key="spring" value="text/html" />
+			<entry key="json" value="application/json" />
+		</map>
+	</property>
+	</bean>
+
+
+
+	<bean id="mappingJacksonHttpMessageConverter"
+		  class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json;charset=UTF-8</value>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

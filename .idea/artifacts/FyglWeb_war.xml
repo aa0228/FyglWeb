@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="FyglWeb:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="FyglWeb.war">
+      <element id="artifact" artifact-name="FyglWeb:war exploded" />
+    </root>
+  </artifact>
+</component>
