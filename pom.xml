@@ -12,7 +12,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <log4j.version>1.2.14</log4j.version>
     <slf4j.core.version>1.6.3</slf4j.core.version>
-    <mysql.driver.version>5.1.18</mysql.driver.version>
+    <mysql.driver.version>8.0.16</mysql.driver.version>
     <junit.version>4.7</junit.version>
 		<commons.collection.version>3.1</commons.collection.version>
 		<javassist.version>3.4.GA</javassist.version>
